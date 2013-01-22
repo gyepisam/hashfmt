@@ -1,0 +1,8 @@
+This program formats lines of input, read from stdin,
+into hash textual format for perl, json or python.
+
+It supports options to insert line breaks and to assign a name
+to the generated output hash.
+
+Author: Gyepi Sam
+Date: Jan 16, 2013
