@@ -1,8 +1,43 @@
+Description:
+
 This program formats lines of input, read from stdin,
 into hash textual format for perl, json or python.
 
-It supports options to insert line breaks and to assign a name
-to the generated output hash.
+It supports options to insert line breaks and
+to assign a name to the generated output hash.
+
+usage: hashfmt [OPTIONS] LANGUAGE
+
+OPTIONS:
+
+  --help | -h : show this text
+
+  --line-break N | -l N : print newline after every N elements
+
+  --variable XX | -v XX : assign the resulting hash to a variable named XX
+
+LANGUAGE is one of: json, perl, python
+
+Example:
+
+cat <<EOS | ./hashfmt -l 4 --variable months python
+Jan 31
+Feb 28
+Mar 31
+Apr 30
+May 31
+Jun 30
+Jul 31
+Aug 31
+Sep 30
+Oct 31
+Nov 30
+Dec 31
+EOS
+
+produces:
+
 
 Author: Gyepi Sam
-Date: Jan 16, 2013
+
+

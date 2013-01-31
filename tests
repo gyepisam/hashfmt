@@ -1,0 +1,17 @@
+#!/bin/sh
+
+prog=./hashfmt
+
+$prog -h 2>&1 | cmp - t/help.exp
+
+$prog python < t/one.in  | cmp - t/one.exp
+
+$prog json < t/two.in | cmp - t/two.exp
+
+$prog --variable counts perl < t/three-in-a-line.in  | cmp - t/three-in-a-line-perl.exp
+
+$prog --variable counts python < t/three-in-a-line.in | cmp - t/three-in-a-line-python.exp
+
+$prog --variable counts perl < t/three-in-two-lines | cmp - t/three-in-a-line-perl.exp
+
+$prog --variable counts python < t/three-in-two-lines | cmp - t/three-in-a-line-python.exp

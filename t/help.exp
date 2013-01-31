@@ -1,0 +1,7 @@
+usage: ./hashfmt [OPTIONS] LANGUAGE
+
+OPTIONS:
+  --help | -h : show this text
+  --line-break N | -l N : print newline after every N elements
+  --variable XX | -v XX : assign the resulting hash to a variable named XX
+LANGUAGE is one of: json, perl, python

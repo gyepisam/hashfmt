@@ -1,10 +1,15 @@
-H = hashfmt
 
-$(H): CXXFLAGS += -std=c++0x -g3 -Wall
-$(H): $(H).cc
+program = hashfmt
+CC = g++
+CXXFLAGS += -std=c++0x -Wall
 
-.PHONY: clean
+$(program): $(program).o
+
+.PHONY: clean tests
+
+tests test:
+	@sh tests
 
 clean:
-	$(RM) $(H)
+	$(RM) $(program) .o *~
 

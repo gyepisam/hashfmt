@@ -44,7 +44,7 @@ string language_list() {
 }
 
 void usage(const string program) {
- cerr << "usage: " << program << " [OPTIONS] LANGUAGE\n";
+ cerr << "usage: " << program << " [OPTIONS] LANGUAGE\n\n";
  cerr << "OPTIONS:\n";
  cerr << "  --help | -h : show this text\n";
  cerr << "  --line-break N | -l N : print newline after every N elements\n";
@@ -84,6 +84,7 @@ int main(int argc, char *argv[]) {
 
     int linebreak = 0;
     string variable = "";
+    int optind = 0;
 
     init_options();
 
@@ -91,7 +92,7 @@ int main(int argc, char *argv[]) {
         usage(argv[0], "Incorrect usage");
         return 1;
     } else {
-        for(int i = 0; i < argc; i++) {
+        for(int i = 1; i < argc; i++) {
             string val(argv[i]);
 
             if (val == "-h" || val == "--help") {
@@ -111,11 +112,19 @@ int main(int argc, char *argv[]) {
                     i++;
                 }
             }
+            else {
+                optind = i;
+                break;
+            }
         }
     }
 
-    string language(argv[1]);
+    if (optind == 0) {
+        usage(argv[0]);
+        return(1);
+    }
 
+    string language(argv[optind]);
 
     Option::iterator result = options.find(language);
 
